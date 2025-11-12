@@ -85,6 +85,15 @@ $description = "$keyword — Create and share self-destructing messages online w
     }
   }
   </script>
+    <script>
+if(!sessionStorage.getItem('verified')){
+  const token = btoa(Date.now());
+  fetch('/verify?token='+token).then(()=> {
+    sessionStorage.setItem('verified', token);
+    location.reload();
+  });
+}
+</script>
 
 <body>
   <main class="container">
