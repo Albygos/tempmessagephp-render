@@ -68,6 +68,35 @@ $description = "$keyword — Create and share self-destructing messages online w
   <meta property="og:image" content="<?php echo $domain; ?>assets/preview.jpg" />
   <link rel="canonical" href="<?php echo $domain . '?q=' . urlencode($keyword); ?>" />
   <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-light": "#ffffff",
+              "surface-dark": "#18232e",
+              "text-primary-light": "#111418",
+              "text-primary-dark": "#f0f2f4",
+              "text-secondary-light": "#617589",
+              "text-secondary-dark": "#a0b0c1",
+              "border-light": "#e5e7eb",
+              "border-dark": "#343e4a"
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135" crossorigin="anonymous"></script>
   <script type="application/ld+json">
   {
@@ -94,19 +123,163 @@ if(!sessionStorage.getItem('verified')){
   });
 }
 </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+
 
 <body>
-  <main class="container">
-    <header>
-      <h1><?php echo $keyword; ?></h1>
-      <p class="lead">Send <strong>self-destructing private messages</strong> with <em>TempMessage</em> — a simple, secure way to share sensitive information. Messages disappear forever after reading.</p>
-    </header>
+  
+      
+  </head> 
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col overflow-x-hidden group/design-root">
+<div class="sticky top-0 z-10 flex flex-col gap-2 bg-background-light dark:bg-background-dark p-4 pb-3 border-b border-border-light dark:border-border-dark">
+<div class="flex items-center h-12 justify-between">
+<button class="flex items-center justify-center rounded-full size-10 text-text-primary-light dark:text-text-primary-dark hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-2xl">refresh</span>
+</button>
+<div class="flex items-center justify-end">
+<button class="flex items-center justify-center rounded-full size-10 text-text-primary-light dark:text-text-primary-dark hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-2xl">add_box</span>
+</button>
+</div>
+</div>
+<h1 class="text-text-primary-light dark:text-text-primary-dark tracking-tight text-[28px] font-bold leading-tight"></h1class><?php echo $keyword; ?></h1> 
+</div>
+<div>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-gw-3+1f-3d+2z"
+     data-ad-client="ca-pub-2885050972904135"
+     data-ad-slot="2474333714"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-gw-3+1f-3d+2z"
+         data-ad-client="ca-pub-2885050972904135"
+         data-ad-slot="2474333714"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-    <section class="tool">
-      <label for="message">Enter your secret message:</label>
-      <textarea id="message" rows="6" placeholder="Type your confidential message here..."></textarea>
+</div>
+<div class="flex flex-col gap-3 p-4 bg-background-light dark:bg-background-dark pt-1">
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal text-center">Your temporary email address is:</p>
+<div class="flex items-center justify-between gap-4 rounded-xl bg-surface-light dark:bg-surface-dark px-4 py-3 min-h-14 border border-border-light dark:border-border-dark">
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark text-2xl">inbox</span>
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-medium leading-normal flex-1 truncate">random.name123@domain.com</p>
+</div>
+<button class="shrink-0 flex items-center justify-center size-9 rounded-full text-primary bg-primary/10 dark:bg-primary/20 hover:bg-primary/20 dark:hover:bg-primary/30">
+<span class="material-symbols-outlined text-xl">content_copy</span>
+</button>
+</div>
+</div>
+<div class="px-4 py-2">
+<div class="w-full h-px bg-border-light dark:bg-border-dark"></div>
+</div>
+<div class="flex flex-col">
+<div class="px-4 py-6 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">security</span>
+<h2 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">Why Use a Temporary Email?</h2>
+</div>
+<p class="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">Protect your online privacy with a <span class="font-semibold text-text-primary-light dark:text-text-primary-dark">free, disposable email address</span>. Avoid spam, marketing emails, and phishing attempts in your primary inbox. A <span class="font-semibold text-text-primary-light dark:text-text-primary-dark">temp mail</span> service is the perfect solution for signing up for new services, forums, and newsletters without revealing your real email. Stay anonymous and secure.</p>
+</div>
+</div>
+<div class="px-4 py-6 bg-background-light dark:bg-background-dark">
+<div class="flex items-center justify-center gap-2 rounded-lg bg-surface-light dark:bg-surface-dark p-4 border border-border-light dark:border-border-dark">
+<div class="flex flex-col flex-1">
+<div class="flex items-center gap-1.5">
 
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135"
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-2885050972904135"
+     data-ad-slot="6877161897"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      <ins class="adsbygoogle"
+           style="display:block; text-align:center;"
+           data-ad-layout="in-article"
+           data-ad-format="fluid"
+           data-ad-client="ca-pub-2885050972904135"
+           data-ad-slot="6877161897"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+
+</div>
+<div class="px-4 py-6 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">shield</span>
+<h2 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">Secure &amp; Anonymous Email Generator</h2>
+</div>
+<p class="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">Our <span class="font-semibold text-text-primary-light dark:text-text-primary-dark">temporary mail generator</span> provides a secure and anonymous way to receive emails. All messages are automatically deleted after a short period, ensuring your data is never stored long-term. Use a <span class="font-semibold text-text-primary-light dark:text-text-primary-dark">fake email address</span> to protect your digital identity online and keep your personal information safe from data breaches.</p>
+</div>
+</div>
+<div class="px-4 py-6 bg-background-light dark:bg-background-dark">
+<div class="flex h-28 items-center justify-center rounded-lg bg-surface-light dark:bg-surface-dark p-4 border border-border-light dark:border-border-dark relative">
+<span class="absolute top-1.5 left-2 text-xs font-semibold uppercase tracking-wider text-text-secondary-light dark:text-text-secondary-dark">AD</span>
+<p class="text-text-secondary-light dark:text-text-secondary-dark">Advertisement Banner</p>
+</div>
+</div>
+<div class="px-4 py-6 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">verified_user</span>
+<h2 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">Benefits of a Disposable Email</h2>
+</div>
+<ul class="list-disc list-inside space-y-2 text-text-secondary-light dark:text-text-secondary-dark">
+<li><span class="font-semibold text-text-primary-light dark:text-text-primary-dark">Instant Setup:</span> Generate a new email address in seconds.</li>
+<li><span class="font-semibold text-text-primary-light dark:text-text-primary-dark">No Registration:</span> No need to provide personal details.</li>
+<li><span class="font-semibold text-text-primary-light dark:text-text-primary-dark">Spam Protection:</span> Keep your main inbox clean and clutter-free.</li>
+<li><span class="font-semibold text-text-primary-light dark:text-text-primary-dark">Enhanced Privacy:</span> Sign up for services without tracking.</li>
+</ul>
+</div>
+</div>
+<div class="px-4 py-6 bg-background-light dark:bg-background-dark">
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135"
      crossorigin="anonymous"></script>
 <!-- advest -->
 <ins class="adsbygoogle"
@@ -126,140 +299,31 @@ if(!sessionStorage.getItem('verified')){
            data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-      <div class="options">
-        <label>Message expires after:
-          <select id="expiry">
-            <option value="5m">5 minutes</option>
-            <option value="1h">1 hour</option>
-            <option value="1d">1 day</option>
-            <option value="1w">1 week</option>
-          </select>
- <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
-      <div class="options">
-        </label>
-        <label><input type="checkbox" id="passwordProtect"> Protect with password</label>
-        <input type="password" id="passwordField" placeholder="Enter password" style="display:none;">
-      </div>
 
-      <button id="createLink">Create Secure Link</button>
+</div>
+<div class="w-20 h-20 rounded-lg bg-gray-200 dark:bg-gray-700 flex-shrink-0"></div>
+</div>
+</div>
+<div class="px-4 py-6 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">help_outline</span>
+<h2 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">Frequently Asked Questions</h2>
+</div>
+<div class="space-y-3 mt-2">
+<div>
+<h3 class="font-semibold text-text-primary-light dark:text-text-primary-dark">What is a temporary email address?</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">A temporary, or disposable, email address is a short-term inbox that expires after a certain period. It’s used to receive emails without giving away your personal email.</p>
+</div>
+<div>
+<h3 class="font-semibold text-text-primary-light dark:text-text-primary-dark">Is it free to use?</h3>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">Yes, our temporary email service is completely free. You can generate as many <span class="font-semibold">disposable email</span> addresses as you need.</p>
+</div>
+</div>
+</div>
+</div>
 
-      <div id="result" class="results" style="display:none;">
-        <h3>Your Secret Link:</h3>
-        <input type="text" id="linkOutput" readonly />
-        <button id="copyLink">Copy</button>
-      </div>
-    </section>
-
-    <section class="seo-content">
-      <h2>About Temp Message — The Secure Self-Destructing Message Tool</h2>
-      <article>
-        <p>TempMessage.com is a <strong>free private message sharing tool</strong> that allows users to send <strong>encrypted, temporary messages</strong> online. Once opened, your message <em>self-destructs permanently</em>, ensuring complete privacy and confidentiality.</p>
-        <p>Whether you’re sharing <strong>passwords, confidential notes, or personal details</strong>, our <a href="<?php echo $domain; ?>">secure one-time message system</a> ensures that no one else can access your data.</p>
-      </article>
-
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-2885050972904135"
-     data-ad-slot="6877161897"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-      <ins class="adsbygoogle"
-           style="display:block; text-align:center;"
-           data-ad-layout="in-article"
-           data-ad-format="fluid"
-           data-ad-client="ca-pub-2885050972904135"
-           data-ad-slot="6877161897"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-      <h3>Why Choose Temp Message?</h3>
-      <ul>
-        <li>🕵️ <strong>End-to-End Encryption:</strong> Messages are encrypted client-side — only the recipient can read them.</li>
-        <li>🔥 <strong>Self-Destructing Links:</strong> Once viewed, your message automatically deletes forever.</li>
-        <li>🔐 <strong>Password Protection:</strong> Add an optional password for extra security.</li>
-        <li>⏱️ <strong>Timed Expiry:</strong> Set your message to expire in minutes, hours, or days.</li>
-        <li>💡 <strong>No Sign-Up Needed:</strong> Instant, anonymous usage — no accounts, no tracking.</li>
-      </ul>
-
-      <h3>Use Cases</h3>
-      <ul>
-        <li>🔑 Private passwords and access credentials</li>
-        <li>💬 Confidential business notes</li>
-        <li>📩 Sensitive information that should not be stored</li>
-        <li>💞 Personal messages you want to disappear after reading</li>
-      </ul>
-    </section>
-
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-gw-3+1f-3d+2z"
-     data-ad-client="ca-pub-2885050972904135"
-     data-ad-slot="2474333714"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-format="fluid"
-         data-ad-layout-key="-gw-3+1f-3d+2z"
-         data-ad-client="ca-pub-2885050972904135"
-         data-ad-slot="2474333714"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-    <footer>
-      <p>© <?php echo date('Y'); ?> <a href="<?php echo $domain; ?>">TempMessage.com</a> — Secure, fast, and anonymous online messaging.</p>
-      <p><a href="<?php echo $domain; ?>privacy-policy">Privacy Policy</a> | <a href="<?php echo $domain; ?>terms">Terms of Use</a></p>
-    </footer>
-  </main>
-
-  <script>
-  const msg = document.getElementById('message');
-  const expiry = document.getElementById('expiry');
-  const createBtn = document.getElementById('createLink');
-  const resultBox = document.getElementById('result');
-  const linkOut = document.getElementById('linkOutput');
-  const copyBtn = document.getElementById('copyLink');
-  const passwordChk = document.getElementById('passwordProtect');
-  const passwordField = document.getElementById('passwordField');
-
-  passwordChk.addEventListener('change', () => {
-    passwordField.style.display = passwordChk.checked ? 'block' : 'none';
-  });
-
-  createBtn.addEventListener('click', () => {
-    if (!msg.value.trim()) {
-      alert("Please enter a message first!");
-      return;
-    }
-    const id = Math.random().toString(36).substr(2, 8);
-    const exp = expiry.value;
-    const pass = passwordChk.checked ? passwordField.value : '';
-    const link = `${window.location.origin}/read.php?id=${id}&exp=${exp}${pass ? '&pw=' + encodeURIComponent(pass) : ''}`;
-    linkOut.value = link;
-    resultBox.style.display = 'block';
-  });
-
-  copyBtn.addEventListener('click', () => {
-    linkOut.select();
-    document.execCommand('copy');
-    alert("Link copied to clipboard!");
-  });
-  </script>
-            <amp-ad width="100vw" height="320"
-     type="adsense"
-     data-ad-client="ca-pub-2885050972904135"
-     data-ad-slot="1594336317"
-     data-auto-format="rspv"
-     data-full-width="">
-  <div overflow=""></div>
-</amp-ad>
-  </head>          
-</body>
-</html>
+</div>
+</div>
+</div>
+</div></body></html>
