@@ -85,7 +85,7 @@ $description = "$keyword — Create and share self-destructing messages online w
     }
   }
   </script>
-</head>
+
 <body>
   <main class="container">
     <header>
@@ -243,5 +243,14 @@ $description = "$keyword — Create and share self-destructing messages online w
     alert("Link copied to clipboard!");
   });
   </script>
+            <amp-ad width="100vw" height="320"
+     type="adsense"
+     data-ad-client="ca-pub-2885050972904135"
+     data-ad-slot="1594336317"
+     data-auto-format="rspv"
+     data-full-width="">
+  <div overflow=""></div>
+</amp-ad>
+  </head>          
 </body>
 </html>
