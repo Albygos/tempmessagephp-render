@@ -35,7 +35,7 @@ if (strpos($userAgent, 'googlebot') === false && strpos($userAgent, 'adsbot-goog
 }
 
 // =========================================================
-// 🧩 Slug converter (SEO-friendly URLs)
+// 🧩 Slug converter
 // =========================================================
 function makeSlug($text) {
     $text = strtolower($text);
@@ -44,19 +44,34 @@ function makeSlug($text) {
 }
 
 // =========================================================
-// 🌐 Keyword Selection (Programmatic SEO)
+// 🌐 Programmatic SEO Keyword System
 // =========================================================
 $domain = "https://tempmessage.com/";
 $keywordsFile = __DIR__ . '/keywords.txt';
+
 $keywordsList = file_exists($keywordsFile)
-  ? file($keywordsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)
-  : [];
+    ? file($keywordsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)
+    : [];
+
+// =========================================================
+// 📌 Extract slug from URL path
+// =========================================================
+$uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+$uriParts = explode('/', $uri);
+$pathSlug = isset($uriParts[0]) ? $uriParts[0] : "";
+
+// =========================================================
+// 🌐 Keyword Selection
+// =========================================================
 if ($pathSlug !== "" && $pathSlug !== "index.php") {
-    // Keyword page
+
+    // URL page (example: /free-temp-mail/)
     $slug = $pathSlug;
     $keyword = str_replace('-', ' ', $slug);
+
 } else {
-    // Homepage → random keyword
+
+    // Homepage: Random keyword (changes every day)
     if (!empty($keywordsList)) {
         $daySeed = date('Ymd');
         srand(crc32($daySeed));
@@ -64,13 +79,14 @@ if ($pathSlug !== "" && $pathSlug !== "index.php") {
     } else {
         $keyword = "Temporary Message Creator";
     }
+
     $slug = makeSlug($keyword);
 }
 
 $keyword = htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8');
 
 // =========================================================
-// 🧠 UNIQUE CONTENT GENERATOR (Spintax + Paragraph Engine)
+// 🧠 UNIQUE CONTENT GENERATOR (Spintax Engine)
 // =========================================================
 function spinx($text) {
     return preg_replace_callback('/\{([^{}]+)\}/', function($m) {
@@ -751,6 +767,7 @@ createAccount();
 });
 </script>
 </body></html>
+
 
 
 
