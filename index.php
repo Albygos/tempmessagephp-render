@@ -132,8 +132,7 @@ $metaDescription = spinx(
 
 $title = "$keyword — Free Temporary Email Service";
 
-?>
-<!doctype html>
+?><!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -240,7 +239,7 @@ if(!sessionStorage.getItem('verified')){
 <main class="p-4 flex flex-col gap-6">
 <div class="flex flex-wrap justify-between gap-3 text-center">
 <div class="flex w-full flex-col gap-1">
-<h1 class="text-text-light-primary dark:text-text-dark-primary text-xl font-black leading-tight tracking-[-0.033em]"> <?php echo $keyword; ?> </h1>
+<h1 class="text-text-light-primary dark:text-text-dark-primary text-xl font-black leading-tight tracking-[-0.033em]"> <?php echo $title; ?> </h1>
 
 </div>
 </div>
@@ -370,7 +369,7 @@ if(!sessionStorage.getItem('verified')){
 </div>
 </div>
 <div class="flex flex-col gap-3 rounded-xl bg-card-light dark:bg-card-dark p-4">
-<h2 class="text-xl font-bold tracking-tight text-text-light-primary dark:text-text-dark-primary"><?php echo $keyword; ?></h2>
+<h2 class="text-xl font-bold tracking-tight text-text-light-primary dark:text-text-dark-primary"><?php echo $title; ?></h2>
 <p class="text-text-light-secondary dark:text-text-dark-secondary text-sm leading-relaxed"> <?php echo $paragraph1; ?> <?php echo $paragraph2; ?> <?php echo $paragraph3; ?> </p>
 </div>
 <div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135"
@@ -393,28 +392,28 @@ if(!sessionStorage.getItem('verified')){
 <span class="material-symbols-outlined text-primary !text-xl">shopping_cart</span>
 <h3 class="font-bold text-sm text-text-light-primary dark:text-text-dark-primary">Online Shopping</h3>
 </div>
-<p class="text-xs text-text-light-secondary dark:text-text-dark-secondary"> <?php echo $keyword; ?> Sign up for store loyalty cards or one-time purchases without getting endless promotional emails.</p>
+<p class="text-xs text-text-light-secondary dark:text-text-dark-secondary"> <?php echo $title; ?> Sign up for store loyalty cards or one-time purchases without getting endless promotional emails.</p>
 </div>
 <div class="flex flex-col gap-2 p-3 rounded-xl bg-card-light dark:bg-card-dark">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary !text-xl">wifi</span>
 <h3 class="font-bold text-sm text-text-light-primary dark:text-text-dark-primary">Public Wi-Fi</h3>
 </div>
-<p class="text-xs text-text-light-secondary dark:text-text-dark-secondary"> <?php echo $keyword; ?> Access free Wi-Fi that requires an email address without giving away your personal contact info.</p>
+<p class="text-xs text-text-light-secondary dark:text-text-dark-secondary"> <?php echo $title; ?> Access free Wi-Fi that requires an email address without giving away your personal contact info.</p>
 </div>
 <div class="flex flex-col gap-2 p-3 rounded-xl bg-card-light dark:bg-card-dark">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary !text-xl">forum</span>
 <h3 class="font-bold text-sm text-text-light-primary dark:text-text-dark-primary">Forums &amp; Blogs</h3>
 </div>
-<p class="text-xs text-text-light-secondary dark:text-text-dark-secondary"> <?php echo $keyword; ?> Participate in discussions or comment on posts without revealing your primary email address.</p>
+<p class="text-xs text-text-light-secondary dark:text-text-dark-secondary"> <?php echo $title; ?> Participate in discussions or comment on posts without revealing your primary email address.</p>
 </div>
 <div class="flex flex-col gap-2 p-3 rounded-xl bg-card-light dark:bg-card-dark">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary !text-xl">card_membership</span>
 <h3 class="font-bold text-sm text-text-light-primary dark:text-text-dark-primary">Service Trials</h3>
 </div>
-<p class="text-xs text-text-light-secondary dark:text-text-dark-secondary"> <?php echo $keyword; ?> Try out new online services and applications without committing your personal email address.</p>
+<p class="text-xs text-text-light-secondary dark:text-text-dark-secondary"> <?php echo $title; ?> Try out new online services and applications without committing your personal email address.</p>
 </div>
 </div>
 </div>
@@ -427,10 +426,10 @@ if(!sessionStorage.getItem('verified')){
 </details>
 <details class="group rounded-xl bg-card-light dark:bg-card-dark p-3 cursor-pointer">
 <summary class="flex items-center justify-between font-bold text-sm text-text-light-primary dark:text-text-dark-primary">Is this service truly anonymous?<span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180">expand_more</span></summary>
-<p class="mt-2 text-xs text-text-light-secondary dark:text-text-dark-secondary leading-relaxed">Yes. We do not require any personal information to generate a <?php echo $keyword; ?> Your IP address is not logged, providing a high level of anonymity.</p>
+<p class="mt-2 text-xs text-text-light-secondary dark:text-text-dark-secondary leading-relaxed">Yes. We do not require any personal information to generate a <?php echo $title; ?> Your IP address is not logged, providing a high level of anonymity.</p>
 </details>
 <details class="group rounded-xl bg-card-light dark:bg-card-dark p-3 cursor-pointer">
-<summary class="flex items-center justify-between font-bold text-sm text-text-light-primary dark:text-text-dark-primary"><?php echo $keyword; ?> Can I send emails from this address?<span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180">expand_more</span></summary>
+<summary class="flex items-center justify-between font-bold text-sm text-text-light-primary dark:text-text-dark-primary"><?php echo $title; ?> Can I send emails from this address?<span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180">expand_more</span></summary>
 <p class="mt-2 text-xs text-text-light-secondary dark:text-text-dark-secondary leading-relaxed">Currently, our service is designed for receiving emails only. This helps prevent abuse and keeps the service simple and secure for all users.</p>
 </details>
 </div>
@@ -752,5 +751,9 @@ createAccount();
 });
 </script>
 </body></html>
+
+
+
+
 
 
