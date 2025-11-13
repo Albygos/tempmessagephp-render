@@ -51,13 +51,12 @@ $keywordsFile = __DIR__ . '/keywords.txt';
 $keywordsList = file_exists($keywordsFile)
   ? file($keywordsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)
   : [];
-
-// If slug exists in URL → extract keyword
-if (isset($_GET['q']) && trim($_GET['q']) !== '') {
-    $slug = trim($_GET['q']);
+if ($pathSlug !== "" && $pathSlug !== "index.php") {
+    // Keyword page
+    $slug = $pathSlug;
     $keyword = str_replace('-', ' ', $slug);
 } else {
-    // Homepage → pick a random keyword (same for full day)
+    // Homepage → random keyword
     if (!empty($keywordsList)) {
         $daySeed = date('Ymd');
         srand(crc32($daySeed));
@@ -752,6 +751,7 @@ createAccount();
 });
 </script>
 </body></html>
+
 
 
 
