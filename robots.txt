@@ -5,4 +5,4 @@ Disallow: /admin
 Disallow: /*?*
 Crawl-delay: 1
 
-Sitemap: https://tempmessage.com/sitemap.php
+Sitemap: https://www.tempmessage.com/sitemap.php
