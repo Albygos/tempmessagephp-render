@@ -85,15 +85,7 @@ if (!$isBot) {
     // ❌ Non-Tier-1 users → LITE MODE page (Google safe)
     if (!in_array($geo['countryCode'] ?? 'XX', $tier1)) {
 
-        echo "<!DOCTYPE html><html><head>
-        <meta name='robots' content='noindex,nofollow'>
-        <title>Temporary Email</title></head>
-        <body style='font-family:sans-serif;text-align:center;margin-top:15vh'>
-        <h1>Temporary Email Service</h1>
-        <p>Fast private inbox.</p>
-        <p>Full features are not available in your region.</p>
-        </body></html>";
-        exit;
+       
     }
 }
 
@@ -846,4 +838,5 @@ createAccount();
 });
 </script>
 </body></html>
+
 
