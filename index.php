@@ -1,78 +1,64 @@
-
 <?php
 // =========================================================
-// 🚫 Block Singapore traffic (allow Google crawlers / adsbot)
+// 🌍 Tier-1 SEO Booster (Institution-Grade)
 // =========================================================
+
+$tier1Countries = ['US','GB','CA','AU','DE','FR','IT','NL','SE','CH','NZ'];
+
 $userAgent = strtolower($_SERVER['HTTP_USER_AGENT'] ?? '');
-if (strpos($userAgent, 'googlebot') === false && strpos($userAgent, 'adsbot-google') === false) {
+$isGoogle = (strpos($userAgent, 'googlebot') !== false || strpos($userAgent, 'adsbot-google') !== false);
 
-    function getClientIP() {
-        foreach (['HTTP_CLIENT_IP','HTTP_X_FORWARDED_FOR','REMOTE_ADDR'] as $key) {
-            if (!empty($_SERVER[$key])) {
-                $ipList = explode(',', $_SERVER[$key]);
-                return trim($ipList[0]);
-            }
+// ---- IP Detection ----
+function getClientIP() {
+    foreach (['HTTP_CLIENT_IP','HTTP_X_FORWARDED_FOR','REMOTE_ADDR'] as $key) {
+        if (!empty($_SERVER[$key])) {
+            $ipList = explode(',', $_SERVER[$key]);
+            return trim($ipList[0]);
         }
-        return '0.0.0.0';
     }
-
-    $ip = getClientIP();
-    $cacheFile = sys_get_temp_dir() . "/geo_{$ip}.json";
-
-    if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 86400) {
-        $data = json_decode(file_get_contents($cacheFile), true);
-    } else {
-        $resp = @file_get_contents("http://ip-api.com/json/{$ip}?fields=status,countryCode");
-        $data = $resp ? json_decode($resp, true) : null;
-        if ($data) file_put_contents($cacheFile, json_encode($data));
-    }
-
-    if (($data['countryCode'] ?? null) === 'SG') {
-        http_response_code(403);
-        echo "<h1 style='text-align:center;margin-top:20vh;font-family:sans-serif;color:#444;'>Access Restricted</h1>
-        <p style='text-align:center;font-family:sans-serif;'>Sorry, TempMessage.com is not available in your region.</p>";
-        exit;
-    }
+    return '0.0.0.0';
 }
+
+$ip = getClientIP();
+$cacheFile = sys_get_temp_dir() . "/geo_{$ip}.json";
+
+if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 86400) {
+    $geo = json_decode(file_get_contents($cacheFile), true);
+} else {
+    $resp = @file_get_contents("http://ip-api.com/json/{$ip}?fields=countryCode");
+    $geo = $resp ? json_decode($resp, true) : null;
+    if ($geo) file_put_contents($cacheFile, json_encode($geo));
+}
+
+$userCountry = $geo['countryCode'] ?? 'XX';
+$isTier1 = in_array($userCountry, $tier1Countries);
 
 // =========================================================
 // 🧩 Slug converter
 // =========================================================
 function makeSlug($text) {
-    $text = strtolower($text);
-    $text = preg_replace('/[^a-z0-9]+/', '-', $text);
-    return trim($text, '-');
+    return trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($text)), '-');
 }
 
 // =========================================================
-// 🌐 Programmatic SEO Keyword System
+// 🌐 Keyword System (50,000 Programmatic Pages)
 // =========================================================
-$domain = "https:www.//tempmessage.com/";
+$domain = "https://tempmessage.com/";
 $keywordsFile = __DIR__ . '/keywords.txt';
 
 $keywordsList = file_exists($keywordsFile)
     ? file($keywordsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES)
     : [];
 
-// =========================================================
-// 📌 Extract slug from URL path
-// =========================================================
+// Extract slug
 $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-$uriParts = explode('/', $uri);
-$pathSlug = isset($uriParts[0]) ? $uriParts[0] : "";
+$pathSlug = explode('/', $uri)[0] ?? "";
 
-// =========================================================
-// 🌐 Keyword Selection
-// =========================================================
+// Keyword selection
 if ($pathSlug !== "" && $pathSlug !== "index.php") {
-
-    // URL page (example: /free-temp-mail/)
     $slug = $pathSlug;
     $keyword = str_replace('-', ' ', $slug);
-
 } else {
-
-    // Homepage: Random keyword (changes every day)
     if (!empty($keywordsList)) {
         $daySeed = date('Ymd');
         srand(crc32($daySeed));
@@ -80,24 +66,20 @@ if ($pathSlug !== "" && $pathSlug !== "index.php") {
     } else {
         $keyword = "Temporary Message Creator";
     }
-
     $slug = makeSlug($keyword);
 }
 
 $keyword = htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8');
-// =========================================================
-// 📌 Canonical Tag Logic (VERY IMPORTANT FOR INDEXING)
-// =========================================================
-if ($pathSlug !== "" && $pathSlug !== "index.php") {
-    // Keyword page → canonical = full keyword URL
-    $canonical = $domain . $slug . '/';
-} else {
-    // Homepage canonical MUST be exactly the homepage
-    $canonical = $domain;
-}
 
 // =========================================================
-// 🧠 UNIQUE CONTENT GENERATOR (Spintax Engine)
+// 📌 Canonical
+// =========================================================
+$canonical = ($pathSlug !== "" && $pathSlug !== "index.php")
+    ? $domain . $slug . '/'
+    : $domain;
+
+// =========================================================
+// 🧠 Spintax + Tier-1 Content Engine
 // =========================================================
 function spinx($text) {
     return preg_replace_callback('/\{([^{}]+)\}/', function($m) {
@@ -106,58 +88,75 @@ function spinx($text) {
     }, $text);
 }
 
-function megaUnique($keyword) {
+function megaUnique($keyword, $isTier1=false) {
     $templates = [
         "{Using|With|Through} $keyword you {stay private|avoid spam|protect your identity|hide your inbox}.",
-        "$keyword {autodeletes all emails|stores nothing|removes messages instantly|keeps no logs}.",
-        "{Perfect|Ideal|Great|Useful} for {signups|OTP attempts|anonymous browsing|quick verification}.",
-        "{No registration needed|Instant access|Zero setup|Completely anonymous} when using $keyword.",
-        "$keyword is {fast|instant|quick|lightning-fast} and {secure|safe|private|encrypted}.",
-        "{Temporary email|Disposable inbox|One-time email} with $keyword helps you stay {hidden|protected|off the radar}.",
-        "{You can use|People rely on|Millions prefer} $keyword for {privacy|quick tasks|secure usage}.",
+        "$keyword {autodeletes emails|stores nothing|removes messages instantly|keeps no logs}.",
+        "$keyword is {fast|quick|instant} and {secure|private|encrypted}.",
+        "{Temporary email|Disposable inbox} with $keyword helps you stay {hidden|protected}.",
     ];
+
+    if ($isTier1) {
+        $templates[] = "$keyword is heavily used across the US, UK, Canada, and Australia for secure verification.";
+        $templates[] = "Millions of Tier-1 users rely on $keyword for privacy, online protection, and safe browsing.";
+        $templates[] = "In countries like the US, UK, and Germany, $keyword is essential for spam-free digital activity.";
+    }
 
     shuffle($templates);
-    $slice = array_slice($templates, 0, rand(3, 6));
-    return spinx(implode(" ", $slice));
+
+    return spinx(implode(" ", array_slice($templates, 0, $isTier1 ? 6 : 4)));
 }
 
-function buildFAQ($keyword) {
-    return [
-        [
-            "q" => spinx("Is {it safe|it secure|it trusted} to use $keyword?"),
-            "a" => spinx("$keyword is completely {safe|secure|private}. All emails are deleted {automatically|instantly|after use}.")
-        ],
-        [
-            "q" => spinx("Can I use $keyword for {signups|verification|OTP}?"),
-            "a" => spinx("Some platforms accept $keyword for OTP, while others {block temp mail|restrict disposable addresses}.")
-        ],
-        [
-            "q" => spinx("How long do messages stay in $keyword?"),
-            "a" => spinx("Messages remain {until refreshed|until session expires|for a short duration}.")
-        ],
-        [
-            "q" => spinx("Do I need an account to use $keyword?"),
-            "a" => spinx("No account is needed. $keyword is {anonymous|instant|registration-free}.")
-        ]
-    ];
+$paragraph1 = megaUnique($keyword, $isTier1);
+$paragraph2 = megaUnique($keyword, $isTier1);
+$paragraph3 = megaUnique($keyword, $isTier1);
+
+// =========================================================
+// 🔥 LSI Keyword Injection (Institution-Level)
+// =========================================================
+$lsiKeywords = [
+    "$keyword online", "$keyword free", "$keyword secure",
+    "temporary inbox", "one-time email generator",
+    "anonymous email tool", "spam-free signups",
+    "email verification tool", "throwaway mailbox"
+];
+shuffle($lsiKeywords);
+$lsiBlock = implode(", ", array_slice($lsiKeywords, 0, 5));
+
+// =========================================================
+// 📝 Meta Description
+// =========================================================
+$metaDescription = $isTier1
+    ? "$keyword — Trusted across the US, UK, and Canada for secure verification, privacy, and online protection."
+    : spinx("Generate a {temporary email|disposable inbox} with $keyword. Fast and private.");
+
+$title = $keyword . " — Free Temporary Email Service";
+
+// =========================================================
+// 📚 Country-Intent SEO Block
+// =========================================================
+$countryText = "";
+switch ($userCountry) {
+    case "US":
+        $countryText = "$keyword is popular across the United States for secure verification and privacy protection.";
+        break;
+    case "GB":
+        $countryText = "In the United Kingdom, $keyword helps users maintain privacy while accessing online services.";
+        break;
+    case "CA":
+        $countryText = "Canadian users trust $keyword for secure signups and spam-free browsing.";
+        break;
+    case "AU":
+        $countryText = "$keyword is widely used in Australia to avoid spam and protect personal email accounts.";
+        break;
+    case "DE":
+        $countryText = "German users prefer $keyword for strong anonymity and advanced privacy control.";
+        break;
 }
 
-$paragraph1 = megaUnique($keyword);
-$paragraph2 = megaUnique($keyword);
-$paragraph3 = megaUnique($keyword);
-$faqList = buildFAQ($keyword);
-
 // =========================================================
-// 📝 Meta Tags
+// 📦 Export Variables for Frontend
 // =========================================================
-$metaDescription = spinx(
-    "{Get|Generate|Create} a {temporary email|disposable inbox|secure one-time email} with $keyword. ".
-    "Fast, private, and fully anonymous."
-);
-
-$title = "$keyword — Free Temporary Email Service";
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -784,6 +783,7 @@ createAccount();
 });
 </script>
 </body></html>
+
 
 
 
