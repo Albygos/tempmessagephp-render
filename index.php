@@ -441,17 +441,8 @@ if (!sessionStorage.getItem('verified')) {
 <h3 class="text-base font-bold text-text-light-primary dark:text-text-dark-primary">Your is Empty</h3>
 <p class="text-text-light-secondary dark:text-text-dark-secondary text-xs max-w-xs">Waiting for incoming emails. Messages will appear here automatically.</p>
 </div>
-<div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-2885050972904135"
-     data-ad-slot="4864052707"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>
-</div>
+
+    <div id="geo-ad" style="min-height:300px;"></div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 <div class="flex items-start gap-3 p-3 rounded-xl bg-card-light dark:bg-card-dark">
 <div class="text-primary mt-0.5"><span class="material-symbols-outlined !text-xl">verified_user</span></div>
@@ -901,6 +892,7 @@ createAccount();
 });
 </script>
 </body></html>
+
 
 
 
