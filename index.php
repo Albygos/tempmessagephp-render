@@ -234,7 +234,11 @@ $title = "$keyword — Free Temporary Email Service";
 
   <meta name="description" content="<?php echo $metaDescription; ?>" />
   <link rel="canonical" href="<?php echo $canonical; ?>" />
-
+<link rel="preconnect" href="https://googleads.g.doubleclick.net">
+<link rel="preconnect" href="https://tpc.googlesyndication.com">
+<link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
+<link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
+    <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" as="script">
   <meta property="og:title" content="<?php echo $keyword; ?>" />
   <meta property="og:description" content="<?php echo $metaDescription; ?>" />
   <meta property="og:url" content="<?php echo $domain . $slug . '/'; ?>" />
@@ -277,6 +281,7 @@ $title = "$keyword — Free Temporary Email Service";
       },
     }
   </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2885050972904135" crossorigin="anonymous"></script>
   <script type="application/ld+json">
   {
@@ -859,6 +864,7 @@ createAccount();
 });
 </script>
 </body></html>
+
 
 
 
