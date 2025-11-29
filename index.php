@@ -83,6 +83,8 @@ if (!$isBot) {
     $tier1 = [
         'US','GB','CA','AU','NZ','DE','FR','NL',
         'SE','CH','NO','DK','FI','BE','AT','IE'
+        ,'IN'
+        
     ];
 
     // ❌ Non-Tier1 humans → blocked
@@ -126,6 +128,628 @@ $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $uriParts = explode('/', $uri);
 $pathSlug = isset($uriParts[0]) ? $uriParts[0] : "";
 
+// =========================================================
+// 🌐 Keyword Selection
+// =========================================================
+if ($pathSlug !== "" && $pathSlug !== "index.php") {
+
+    $slug = $pathSlug;
+    $keyword = str_replace('-', ' ', $slug);
+
+} else {
+
+    if (!empty($keywordsList)) {
+        $daySeed = date('Ymd');
+        srand(crc32($daySeed));
+        $keyword = $keywordsList[array_rand($keywordsList)];
+    } else {
+        $keyword = "Temporary Message Creator";
+    }
+
+    $slug = makeSlug($keyword);
+}
+
+$keyword = htmlspecialchars($keyword, ENT_QUOTES, 'UTF-8');
+
+// =========================================================
+// 📌 Canonical Tag Logic
+// =========================================================
+if ($pathSlug !== "" && $pathSlug !== "index.php") {
+    $canonical = $domain . $slug . '/';
+} else {
+    $canonical = $domain;
+}
+
+// =========================================================
+// 🧠 UNIQUE CONTENT GENERATOR (Spintax Engine)
+// =========================================================
+function spinx($text) {
+    return preg_replace_callback('/\{([^{}]+)\}/', function($m) {
+        $parts = explode('|', $m[1]);
+        return $parts[array_rand($parts)];
+    }, $text);
+}
+
+function megaUnique($keyword) {
+    $templates = [
+        "{Using|With|Through} $keyword you {stay private|avoid spam|protect your identity|hide your inbox}.",
+        "$keyword {autodeletes all emails|stores nothing|removes messages instantly|keeps no logs}.",
+        "{Perfect|Ideal|Great|Useful} for {signups|OTP attempts|anonymous browsing|quick verification}.",
+        "{No registration needed|Instant access|Zero setup|Completely anonymous} when using $keyword.",
+        "$keyword is {fast|instant|quick|lightning-fast} and {secure|safe|private|encrypted}.",
+        "{Temporary email|Disposable inbox|One-time email} with $keyword helps you stay {hidden|protected|off the radar}.",
+        "{You can use|People rely on|Millions prefer} $keyword for {privacy|quick tasks|secure usage}.",
+    ];
+
+    shuffle($templates);
+    $slice = array_slice($templates, 0, rand(3, 6));
+    return spinx(implode(" ", $slice));
+}
+
+function buildFAQ($keyword) {
+    return [
+        [
+            "q" => spinx("Is {it safe|it secure|it trusted} to use $keyword?"),
+            "a" => spinx("$keyword is completely {safe|secure|private}. All emails are deleted {automatically|instantly|after use}.")
+        ],
+        [
+            "q" => spinx("Can I use $keyword for {signups|verification|OTP}?"),
+            "a" => spinx("Some platforms accept $keyword for OTP, while others {block temp mail|restrict disposable addresses}.")
+        ],
+        [
+            "q" => spinx("How long do messages stay in $keyword?"),
+            "a" => spinx("Messages remain {until refreshed|until session expires|for a short duration}.")
+        ],
+        [
+            "q" => spinx("Do I need an account to use $keyword?"),
+            "a" => spinx("No account is needed. $keyword is {anonymous|instant|registration-free}.")
+        ]
+    ];
+}
+
+$paragraph1 = megaUnique($keyword);
+$paragraph2 = megaUnique($keyword);
+$paragraph3 = megaUnique($keyword);
+$faqList = buildFAQ($keyword);
+
+// =========================================================
+// 📝 Meta Tags
+// =========================================================
+$metaDescription = spinx(
+    "{Get|Generate|Create} a {temporary email|disposable inbox|secure one-time email} with $keyword. ".
+    "Fast, private, and fully anonymous."
+);
+
+$title = "$keyword — Free Temporary Email Service";
+
+?>
+<?php ob_end_flush(); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Best Car, Health & Life Insurance Quotes – Compare & Save</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Compare car insurance quotes, health insurance plans, life insurance, and small business liability insurance. Get cheap insurance rates and save more on premiums." />
+
+  <!-- ====== AdSense (REPLACE client ID) ====== -->
+  <!-- Replace ca-pub-XXXXXXX with your own publisher ID -->
+<!-- Preconnect for faster DNS and connection setup -->
+<link rel="preconnect" href="https://pagead2.googlesyndication.com">
+<link rel="preconnect" href="https://googleads.g.doubleclick.net">
+<link rel="preconnect" href="https://tpc.googlesyndication.com">
+
+<!-- Load AdSense JS asynchronously -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Lazy Load AdSense Ads -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const adSlots = document.querySelectorAll(".adsbygoogle");
+        const options = { rootMargin: "200px 0px", threshold: 0.01 };
+
+        let observer = new IntersectionObserver((entries, self) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    self.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        adSlots.forEach(ad => observer.observe(ad));
+    });
+</script>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --primary: #0b66ff;
+      --primary-dark: #0641a8;
+      --accent: #00b894;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border-soft: #e5e7eb;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --radius-xl: 14px;
+      --radius-lg: 10px;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0ebff 0, #f5f7fb 40%, #f5f7fb 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .logo span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0b66ff, #00b894);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: background 0.15s ease, border 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text-main);
+    }
+
+    .nav-cta {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 1rem auto 3rem;
+      padding: 0 1rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.2fr);
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.98));
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.7rem, 3vw, 2.1rem);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.08);
+      color: #047857;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-badge {
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.06);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      color: #1d4ed8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.45);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.55);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.9);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text-main);
+      padding: 0.45rem 0.9rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.7rem;
+    }
+
+    .hero-aside {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 18px;
+      padding: 1.3rem 1.1rem;
+      color: #e5e7eb;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-aside::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      background: radial-gradient(circle at 20% 0, rgba(59, 130, 246, 0.4), transparent 50%),
+                  radial-gradient(circle at 80% 100%, rgba(16, 185, 129, 0.35), transparent 50%);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .hero-aside-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-aside h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-aside p {
+      font-size: 0.85rem;
+      color: #cbd5f5;
+      margin-bottom: 0.7rem;
+    }
+
+    .quick-form {
+      display: grid;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .quick-form label {
+      font-size: 0.78rem;
+      color: #e5e7eb;
+    }
+
+    .quick-form input,
+    .quick-form select {
+      width: 100%;
+      padding: 0.4rem 0.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+      font-size: 0.82rem;
+    }
+
+    .quick-form input::placeholder {
+      color: #9ca3af;
+    }
+
+    .hero-aside-note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 2.3rem;
+    }
+
+    section h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.3rem;
+    }
+
+    section > p.lead {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      padding: 1rem 1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    ul {
+      padding-left: 1rem;
+      margin: 0.4rem 0 0.3rem;
+      font-size: 0.88rem;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .checklist li::before {
+      content: "✔";
+      color: var(--accent);
+      margin-right: 0.35rem;
+      font-size: 0.85rem;
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 0.7rem 0.8rem;
+      cursor: pointer;
+    }
+
+    .faq-q {
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .faq-a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      display: none;
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    .faq-toggle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* Ad slots */
+    .ad-wrapper {
+      margin: 1.1rem 0;
+      padding: 0.65rem;
+      background: #f9fafb;
+      border-radius: 12px;
+      border: 1px dashed #d1d5db;
+      font-size: 0.78rem;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    .ad-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #9ca3af;
+      margin-bottom: 0.3rem;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-soft);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .scroll-top {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      padding: 0.5rem 0.7rem;
+      border-radius: 999px;
+      border: none;
+      background: rgba(15, 23, 42, 0.92);
+      color: #f9fafb;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.5);
+    }
+
+    .scroll-top.show {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        padding-top: 0.4rem;
+        border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      }
+
+      .hero-card,
+      .hero-aside {
+        pa
 // =========================================================
 // 🌐 Keyword Selection
 // =========================================================
@@ -397,3 +1021,4 @@ setInterval(()=>{
 
 </body>
     </html>
+
