@@ -93,11 +93,6 @@ if (!$isBot) {
 
         if ($isBot) {
             // Bot sees full content
-        } else {
-            // Human non-Tier1 blocked
-            http_response_code(403);
-            echo "<h1>Access Restricted</h1>";
-            exit;
         }
     }
 }
@@ -215,12 +210,8 @@ $faqList = buildFAQ($keyword);
 // =========================================================
 // 📝 Meta Tags
 // =========================================================
-$metaDescription = spinx(
-    "{Get|Generate|Create} a {temporary email|disposable inbox|secure one-time email} with $keyword. ".
-    "Fast, private, and fully anonymous."
-);
 
-$title = "$keyword — Free Temporary Email Service";
+$title = "$keyword — ";
 
 ?>
 <?php ob_end_flush(); ?>
@@ -1282,4 +1273,5 @@ $title = "$keyword — Free Temporary Email Service";
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
